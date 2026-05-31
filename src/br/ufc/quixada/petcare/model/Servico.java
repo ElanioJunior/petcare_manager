@@ -9,4 +9,8 @@ public abstract class Servico {
         this.descricao=descricao;
     }
 
+    public abstract double calcularValor();
+
+
+
 }
