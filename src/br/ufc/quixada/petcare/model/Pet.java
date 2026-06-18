@@ -7,4 +7,22 @@ public class Pet {
     private String especie;
     private double peso;
 
+    public Pet(String nome, String especie, double peso){
+        this.nome = nome;
+        this.especie = especie;
+        this.peso = peso;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEspecie() {
+        return especie;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
 }
