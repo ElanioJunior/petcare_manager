@@ -1,4 +1,26 @@
 package br.ufc.quixada.petcare.model;
 
-public class ConsultaMedica {
+import br.ufc.quixada.petcare.exception.CampoObrigatorioException;
+
+class ConsultaMedica extends Servico{
+    private String nomeVeterinario;
+    private String crmv;
+
+    public ConsultaMedica(String data, String descricao, String nomeVeterinario, String crmv){
+        super(data, descricao);
+
+        if (nomeVeterinario.isEmpty()) {
+            throw new CampoObrigatorioException("nomeVeterinario");
+        }
+        if (crmv.isEmpty()) {
+            throw new CampoObrigatorioException("crmv");
+        }
+        this.nomeVeterinario = nomeVeterinario;
+        this.crmv = crmv;
+    }
+
+    @Override
+    public double calcularValor() {
+        return 150.0;
+    }
 }
