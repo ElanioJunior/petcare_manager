@@ -14,4 +14,32 @@ public class PetTest {
         assertEquals("cachorro", pet.getEspecie());
         assertEquals(50.0, pet.getPeso());
     }
+
+    @Test
+    void nomeNuloException(){
+        assertThrows(ValidacaoException.class, () -> {
+            Pet pet = new Pet(null, "cachorro", 10.0);
+        });
+    }
+
+    @Test
+    void especieNulaException(){
+        assertThrows(ValidacaoException.class, () -> {
+            Pet pet = new Pet("toby", null, 15.0);
+        });
+    }
+
+    @Test
+    void pesoZeroException(){
+        assertThrows(ValidacaoException.class, () -> {
+            Pet pet = new Pet("toby", "cachorro", 0);
+        });
+    }
+
+    @Test
+    void pesoNegativoException(){
+        assertThrows(ValidacaoException.class, () -> {
+            Pet pet = new Pet("toby", "cachorro", -1);
+        });
+    }
 }
