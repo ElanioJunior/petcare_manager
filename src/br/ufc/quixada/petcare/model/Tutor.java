@@ -1,6 +1,7 @@
 package br.ufc.quixada.petcare.model;
 
 import br.ufc.quixada.petcare.exception.CPFInvalidoException;
+import br.ufc.quixada.petcare.exception.ValidacaoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,9 @@ public class Tutor {
     public Tutor(String nome, String cpf){
         if (cpf == null || cpf.isBlank() || cpf.length() != 11){
             throw new CPFInvalidoException("CPF invalido");
+        }
+        if (nome == null || nome.isBlank()){
+            throw new ValidacaoException("nome invalido");
         }
         this.pets = new ArrayList<>();
         this.nome = nome;

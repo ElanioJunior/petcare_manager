@@ -21,4 +21,7 @@ public class ProcedimentoEstetico extends Servico{
         return tipoServico;
     }
 
+    public void setTipoServico(String tipoServico) {
+        this.tipoServico = tipoServico;
+    }
 }
