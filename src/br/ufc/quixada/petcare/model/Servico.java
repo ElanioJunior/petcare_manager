@@ -1,10 +1,18 @@
 package br.ufc.quixada.petcare.model;
 
+import br.ufc.quixada.petcare.exception.ValidacaoException;
+
 public abstract class Servico {
     private String data;
     private String descricao;
 
     public Servico(String data, String descricao){
+        if (data==null || data.isBlank()){
+            throw new ValidacaoException("data invalida");
+        }
+        if (descricao==null || descricao.isBlank()){
+            throw new ValidacaoException("descrição invalida");
+        }
         this.data=data;
         this.descricao=descricao;
     }

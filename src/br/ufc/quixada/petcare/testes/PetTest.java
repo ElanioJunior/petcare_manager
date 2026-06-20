@@ -9,11 +9,12 @@ public class PetTest {
 
     @Test
     void petDadosValidos(){
-        Pet pet = new Pet("toby", "cachorro", 50);
+        Pet pet = new Pet("toby", "cachorro", 50.0);
         assertEquals("toby", pet.getNome());
         assertEquals("cachorro", pet.getEspecie());
         assertEquals(50.0, pet.getPeso());
     }
+
 
     @Test
     void nomeNuloException(){

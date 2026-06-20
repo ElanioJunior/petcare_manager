@@ -10,11 +10,11 @@ public class Pet {
     private double peso;
 
     public Pet(String nome, String especie, double peso){
-        if (nome == null){
-            throw new ValidacaoException("nome invalido(nulo)");
+        if (nome == null || nome.isBlank()){
+            throw new ValidacaoException("nome invalido");
         }
-        if (especie == null){
-            throw new ValidacaoException("especie invalido(nulo)");
+        if (especie == null || especie.isBlank()){
+            throw new ValidacaoException("especie invalido");
         }
         if (peso<=0){
             throw new ValidacaoException("peso invalido");

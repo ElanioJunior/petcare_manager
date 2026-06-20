@@ -11,7 +11,7 @@ public class Tutor {
     private List<Pet> pets;
 
     public Tutor(String nome, String cpf){
-        if (cpf.length() != 11){
+        if (cpf == null || cpf.isBlank() || cpf.length() != 11){
             throw new CPFInvalidoException("CPF invalido");
         }
         this.pets = new ArrayList<>();

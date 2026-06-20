@@ -1,12 +1,12 @@
 package br.ufc.quixada.petcare.model;
 import br.ufc.quixada.petcare.exception.CampoObrigatorioException;
 
-class ProcedimentoEstetico extends Servico{
+public class ProcedimentoEstetico extends Servico{
     private String tipoServico;
 
     public ProcedimentoEstetico(String data, String descricao, String tipoServico){
         super(data, descricao);
-        if (tipoServico.isEmpty()){
+        if (tipoServico == null || tipoServico.isBlank()){
             throw new CampoObrigatorioException("tipoServico");
         }
         this.tipoServico = tipoServico;

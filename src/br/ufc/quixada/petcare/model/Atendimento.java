@@ -10,7 +10,7 @@ public class Atendimento implements Agendavel {
     private String horario;
 
     public Atendimento(Tutor tutor, Pet pet, Servico servico, String horario){
-        if (!horario.matches("\\d{2}:\\d{2}")){
+        if (horario == null || !horario.matches("\\d{2}:\\d{2}")){
             throw new HorarioInvalidoException("Horario invalido");
         }
         this.tutor = tutor;
