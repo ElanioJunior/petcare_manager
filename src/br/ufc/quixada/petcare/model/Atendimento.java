@@ -1,13 +1,19 @@
 package br.ufc.quixada.petcare.model;
 
 import br.ufc.quixada.petcare.exception.HorarioInvalidoException;
+import br.ufc.quixada.petcare.exception.HorarioOcupadoException;
+import br.ufc.quixada.petcare.exception.ValidacaoException;
 import br.ufc.quixada.petcare.interfaces.Agendavel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Atendimento implements Agendavel {
     private Tutor tutor;
     private Pet pet;
     private Servico servico;
     private String horario;
+    private static List<String> horariosOcupados = new ArrayList<>();
 
     public Atendimento(Tutor tutor, Pet pet, Servico servico, String horario){
         if (horario == null || !horario.matches("\\d{2}:\\d{2}")){
@@ -17,15 +23,24 @@ public class Atendimento implements Agendavel {
         this.pet = pet;
         this.servico = servico;
         this.horario = horario;
+        agendar(null, horario);
     }
 
     @Override
     public boolean agendar(String data, String hora) {
+       if (horariosOcupados.contains(hora)){
+           throw new HorarioOcupadoException("horario ocupado");
+       }
+       horariosOcupados.add(hora);
         return true;
     }
 
     @Override
     public boolean cancelar() {
+        if (!horariosOcupados.contains(this.horario)){
+            throw new ValidacaoException("horario não encontrado");
+        }
+        horariosOcupados.remove(this.horario);
         return true;
     }
 
